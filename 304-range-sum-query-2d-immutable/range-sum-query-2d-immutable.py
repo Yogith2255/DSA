@@ -4,16 +4,20 @@ class NumMatrix(object):
         """
         :type matrix: List[List[int]]
         """
-        self.matrix=matrix
-        self.arr=[]
-        for i in range(len(self.matrix)):
-            s=0
-            temp=[]
-            for j in range(len(self.matrix[0])):
-                s=s+self.matrix[i][j]
-                temp.append(s)
-            self.arr.append(temp)
-        print(self.arr)
+        rows=len(matrix)
+        cols=len(matrix[0])
+
+        for i in matrix:
+            print(i)
+        self.rectangle=[]
+        for i in range(rows+1):
+            s=[]
+            for j in range(cols+1):
+                s.append(0)
+            self.rectangle.append(s)
+        for i in range(1,rows+1):
+            for j in range(1,cols+1):
+                self.rectangle[i][j]=self.rectangle[i-1][j]+self.rectangle[i][j-1]+matrix[i-1][j-1]-self.rectangle[i-1][j-1]
 
         
 
@@ -25,15 +29,12 @@ class NumMatrix(object):
         :type col2: int
         :rtype: int
         """
-        ans=0
-        for i in range(row2-row1+1):
-            if col1==0:
-                ans=ans+self.arr[row1][col2]
-            else:
-                ans=ans+(self.arr[row1][col2]-self.arr[row1][col1-1])
-            row1+=1
-            
-        return ans
+        row1+=1
+        col1+=1
+        row2+=1
+        col2+=1
+        return(self.rectangle[row2][col2]-self.rectangle[row1-1][col2]-self.rectangle[row2][col1-1]+self.rectangle[row1-1][col1-1])
+        
 
 
         
