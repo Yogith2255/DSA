@@ -7,6 +7,6 @@ class Solution(object):
         minimum=prices[0]
         profit=0
         for i in prices:
-            minimum=min(minimum,i)
-            profit=max(profit,i-minimum)
+            minimum=min(i,minimum)
+            profit=max(i-minimum,profit)
         return profit
