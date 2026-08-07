@@ -1,20 +1,17 @@
-class Solution(object):
-    def subarraySum(self, nums, k):
-        """
-        :type nums: List[int]
-        :type k: int
-        :rtype: int
-        """
-        prefixsum=0
-        hashmap={0:1}
-        ans=0
-        for i in nums:
-            prefixsum+=i
-            if (prefixsum-k) in hashmap:
-                ans+=hashmap[prefixsum-k]
-            if prefixsum in hashmap:
-                hashmap[prefixsum]+=1
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        mp = {}
+        tot = 0
+        count = 0
+        for ele in nums:
+            tot += ele
+            if(tot == k):
+                count += 1
+            if(tot - k in mp):
+                count += mp[tot-k]
+            if(tot in mp):
+                mp[tot] += 1
             else:
-                hashmap[prefixsum]=1
-        return(ans)
-        
+                mp[tot] = 1
+
+        return count
