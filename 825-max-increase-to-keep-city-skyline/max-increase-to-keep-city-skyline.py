@@ -13,7 +13,7 @@ class Solution:
         s=0
         for i in range(n):
             for j in range(n):
-                m=min(rows[i],cols[j])
-                s=s+(m-grid[i][j])
+                s+=min(rows[i],cols[j]) - grid[i][j]
+                
         return s
         
