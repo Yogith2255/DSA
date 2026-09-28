@@ -1,0 +1,1 @@
+<h2>subrectangle-queries Notes</h2><hr>[ Time taken: 4hrs 32m 1s ]
